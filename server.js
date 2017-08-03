@@ -71,6 +71,7 @@ function getRoom(roomName) {
                     yObj.get('content').insert(0, dummyData[i].content);
                 }
 
+                console.log('room has:', y.share.data.toArray().length);
                 resolve(y);
             });
         });
