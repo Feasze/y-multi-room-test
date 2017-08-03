@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="bower_components/socket.io-client/dist/socket.io.js" type="text/javascript"></script>
+<script src="bower_components/yjs/y.js" type="text/javascript"></script>
+<script src="bower_components/y-memory/y-memory.js" type="text/javascript"></script>
+<script src="bower_components/y-array/y-array.js" type="text/javascript"></script>
+<script src="bower_components/y-map/y-map.js" type="text/javascript"></script>
+<script src="bower_components/y-text/y-text.js" type="text/javascript"></script>
+<script src="bower_components/y-websockets-client/y-websockets-client.js" type="text/javascript"></script>
+<script type="text/javascript">
+    var socket = io('localhost:8080');
+    function createServer(roomName) {
+        Y({
+              db: {
+                  name: 'memory'
+              },
+              connector: {
+                  name: 'websockets-client',
+                  room: roomName,
+                  socket: socket
+              },
+              share: {
+                  data: 'Array'
+              }
+          }).then(function(y) {
+            y.connector.whenSynced(function() {
+                console.log(roomName, y.share.data.toArray());
+            })
+        });
+    }
+
+    createServer('room-1');
+    createServer('room-2');
+    createServer('room-3');
+    createServer('room-4');
+</script>
+</body>
+</html>

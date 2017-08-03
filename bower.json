@@ -1,0 +1,29 @@
+{
+  "name": "virtualrepeat-test",
+  "authors": [
+    "Fake Zijl <fake@pluxbox.nl>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "yjs": "^12.3.1",
+    "y-array": "^10.1.3",
+    "y-map": "^10.1.1",
+    "y-text": "^9.4.0",
+    "y-richtext": "^9.0.8",
+    "y-memory": "^8.0.8",
+    "y-websockets-client": "^8.0.16",
+    "socket.io-client": "^2.0.3",
+    "y-test": "^0.4.1"
+  }
+}
