@@ -5,6 +5,10 @@
     <title>Title</title>
 </head>
 <body>
+<div>Room 1: <span id="room-1"></span></div>
+<div>Room 2: <span id="room-2"></span></div>
+<div>Room 3: <span id="room-3"></span></div>
+<div>Room 4: <span id="room-4"></span></div>
 <script src="bower_components/socket.io-client/dist/socket.io.js" type="text/javascript"></script>
 <script src="bower_components/yjs/y.js" type="text/javascript"></script>
 <script src="bower_components/y-memory/y-memory.js" type="text/javascript"></script>
@@ -30,8 +34,13 @@
           }).then(function(y) {
             y.connector.whenSynced(function() {
                 console.log(roomName, y.share.data.toArray());
+                setValue(roomName, y.share.data.toArray().length);
             })
         });
+    }
+
+    function setValue(room, value) {
+        document.getElementById(room).innerHTML = value;
     }
 
     createServer('room-1');
